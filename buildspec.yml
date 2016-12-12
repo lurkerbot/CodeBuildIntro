@@ -14,3 +14,4 @@ artifacts:
     - main
     - appspec.yml
     - post-install.sh
+    - launch.sh
