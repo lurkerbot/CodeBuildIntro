@@ -4,10 +4,6 @@ files:
   - source: /main
     destination: /home/ubuntu/codebuildtest
 hooks:
-  BeforeInstall:
-    - location: post-install.sh
-      timeout: 30
-      runas: ubuntu
   ApplicationStart:
     - location: launch.sh
       timeout: 300
