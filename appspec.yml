@@ -1,7 +1,7 @@
-version: 0.0
+version: 0.1
 os: linux
 files:
-  - source: /
+  - source: /main
     destination: /home/ubuntu/codebuildtest
 hooks:
   BeforeInstall:
@@ -12,4 +12,3 @@ hooks:
     - location: main
       timeout: 300
       runas: ubuntu
-- See more at: http://www.tothenew.com/blog/aws-codedeploy-and-github/#sthash.NnVfvWPQ.dpuf
