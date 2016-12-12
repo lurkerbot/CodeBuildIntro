@@ -1,5 +1,5 @@
 #!/bin/bash
 pkill main
-./main &
-disown -h
+sleep 1
+nohup ./main & > /dev/null &
 exit 0
