@@ -1,3 +1,3 @@
 #!/bin/sh
-./main &
+nohup ./main &
 exit 0
