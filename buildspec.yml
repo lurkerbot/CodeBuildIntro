@@ -13,3 +13,4 @@ artifacts:
   files:
     - main
     - appspec.yml
+    - post-install.sh
