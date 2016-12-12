@@ -5,7 +5,7 @@ files:
     destination: /home/ubuntu/codebuildtest
 hooks:
   BeforeInstall:
-    - location: /usr/bin/pkill main
+    - location: post-install.sh
       timeout: 30
       runas: root
   ApplicationStart:
