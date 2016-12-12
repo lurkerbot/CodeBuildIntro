@@ -1,0 +1,15 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/codebuildtest
+hooks:
+  BeforeInstall:
+    - location: pkill main
+      timeout: 30
+      runas: root
+  ApplicationStart:
+    - location: main
+      timeout: 300
+      runas: ubuntu
+- See more at: http://www.tothenew.com/blog/aws-codedeploy-and-github/#sthash.NnVfvWPQ.dpuf
