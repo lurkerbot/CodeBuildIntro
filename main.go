@@ -3,18 +3,33 @@ package main
 import (
     "fmt"
     "net/http"
+    "net"
+    "log"
 )
 
-func handler(w http.ResponseWriter, r *http.Request) {
-    // fmt.Fprintf(w, "Hi there, I love %s!", r.URL.Path[1:])
-    fmt.Fprintf(w, "Greetings CodeDeploy :)")
+type SimpleHTTPHandler struct{}
+
+func (*SimpleHTTPHandler) ServeHTTP(httpWriter http.ResponseWriter, httpRequest *http.Request) {
+    fmt.Fprintf(httpWriter, "Greetings CodeDeploy :), path: %s", httpRequest.URL.Path[1:])
+    log.Print("serving")
 }
 
 /**
- * Simple port 8080 server to allow demonstration of minimal CodeBuild/CodePipeline
+ * Simple port 1234 server to allow demonstration of minimal CodeBuild/CodePipeline
  * CI deployment
  */
 func main() {
-    http.HandleFunc("/", handler)
-    http.ListenAndServe("0.0.0.0:1234", nil)
-}
+    server := &http.Server{Handler: &SimpleHTTPHandler{}}
+
+    listener, error := net.Listen("tcp4", ":1234")
+    
+    if error != nil {
+        log.Fatal(error)
+    }
+
+    error = server.Serve(listener)
+
+    if error != nil {
+        log.Fatal(error)
+    }
+}	
