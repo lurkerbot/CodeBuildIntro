@@ -1,5 +1,5 @@
 #!/bin/bash
-#pkill main
-nohup ./main &
+pkill main
+nohup main &
 exit 0
 
